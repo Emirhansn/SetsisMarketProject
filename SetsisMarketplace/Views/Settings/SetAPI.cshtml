@@ -1,0 +1,347 @@
+﻿
+@{
+    ViewBag.Title = "SetAPI";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+ 
+</head>
+<div style="float:left; margin-left:30px; margin-top:20px;">
+    <h1>API Tanımlama</h1>
+    <h4>Bu sayfadan pazaryerlerinizin bilgilerini tanımlayabilir ve mağazanızı sistemde aktif hale getirebilirsiniz. </h4>
+    <br />
+
+    <div class="mt-2">
+        <a class="text-dark" data-toggle="collapse" href="#hbTask" aria-expanded="false" aria-controls="hbTask">
+            <h4 class="m-0 pb-2">
+                <i class='uil uil-angle-down font-18'></i>Hepsiburada <span class="text-muted"></span>
+            </h4>
+        </a>
+
+        <div class="collapse show" id="hbTask">
+            <div class="card mb-0">
+                <div class="card-body">
+                    <!-- task -->
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="hb_username" class="col-form-label">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="hb_username" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_password" class="col-form-label">Şifre</label>
+                            <input type="text" class="form-control" id="hb_password" placeholder="Şifre">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_id" class="col-form-label">Merchant ID</label>
+                            <input type="text" class="form-control" id="hb_id" placeholder="Merchant ID">
+                        </div>
+                        <div id="hb_btn">
+                            <button type="submit" class="btn btn-primary" id="hb_send" style="float:right;">Kaydet</button>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> <!-- end .mt-2-->
+    </div>
+
+
+
+    <div class="mt-4">
+        <a class="text-dark" data-toggle="collapse" href="#tyTask" aria-expanded="false"
+           aria-controls="tyTask">
+            <h4 class="m-0 pb-2">
+                <i class='uil uil-angle-down font-18'></i>Trendyol <span class="text-muted"></span>
+            </h4>
+        </a>
+
+        <div class="collapse" id="tyTask">
+            <div class="card mb-0">
+                <div class="card-body">
+
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="ty_username" class="col-form-label">API Key</label>
+                            <input type="text" class="form-control" id="ty_apikey" placeholder="API Key">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="ty_password" class="col-form-label">API Secret</label>
+                            <input type="text" class="form-control" id="ty_apisecret" placeholder="API Secret">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="ty_id" class="col-form-label">Satıcı ID</label>
+                            <input type="text" class="form-control" id="ty_supplierid" placeholder="Satıcı ID">
+                        </div>
+                        <div id="ty_btn">
+                            <button type="submit" class="btn btn-primary" id="ty_send" style="float:right;">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="mt-4 mb-4">
+        <a class="text-dark" data-toggle="collapse" href="#n11Task" aria-expanded="false"
+           aria-controls="n11Task">
+            <h4 class="m-0 pb-2">
+                <i class='uil uil-angle-down font-18'></i>N11 <span class="text-muted"></span>
+            </h4>
+        </a>
+
+        <div class="collapse" id="n11Task">
+            <div class="card mb-0">
+                <div class="card-body">
+                    
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="hb_username" class="col-form-label">API Key</label>
+                            <input type="text" class="form-control" id="n11_apikey" placeholder="API Key">
+                        </div>
+                        <div id="n11_btn">
+                            <button type="submit" class="btn btn-primary" id="n11_send" style="float:right;">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mt-4">
+        <a class="text-dark" data-toggle="collapse" href="#ggTask" aria-expanded="false"
+           aria-controls="ggTask">
+            <h4 class="m-0 pb-2">
+                <i class='uil uil-angle-down font-18'></i>Gittigidiyor <span class="text-muted"></span>
+            </h4>
+        </a>
+
+        <div class="collapse" id="ggTask">
+            <div class="card mb-0">
+                <div class="card-body">
+                    
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="gg_apikey" class="col-form-label">API Key</label>
+                            <input type="text" class="form-control" id="gg_apikey" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="gg_secretkey" class="col-form-label">Secret Key</label>
+                            <input type="text" class="form-control" id="gg_secretkey" placeholder="Secret Key">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="rolename" class="col-form-label">Role Name</label>
+                            <input type="text" class="form-control" id="rolename" placeholder="Mağaza Adınız">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="rolepass" class="col-form-label">Role Pass</label>
+                            <input type="text" class="form-control" id="rolepass" placeholder="Developer ID">
+                        </div>
+                        <div id="gg_btn">
+                            <button type="submit" class="btn btn-primary" id="gg_send" style="float:right;">Kaydet</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mt-4">
+        <a class="text-dark" data-toggle="collapse" href="#amzTask" aria-expanded="false"
+           aria-controls="amzTask">
+            <h4 class="m-0 pb-2">
+                <i class='uil uil-angle-down font-18'></i>Amazon <span class="text-muted"></span>
+            </h4>
+        </a>
+
+        <div class="collapse" id="amzTask">
+            <div class="card mb-0">
+                <div class="card-body">
+                    
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="hb_username" class="col-form-label">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="hb_username" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_password" class="col-form-label">Şifre</label>
+                            <input type="text" class="form-control" id="hb_password" placeholder="Şifre">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_id" class="col-form-label">Merchant ID</label>
+                            <input type="text" class="form-control" id="hb_id" placeholder="Merchant ID">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="mt-4">
+        <a class="text-dark" data-toggle="collapse" href="#cckTask" aria-expanded="false"
+           aria-controls="cckTask">
+            <h4 class="m-0 pb-2">
+                <i class='uil uil-angle-down font-18'></i>Çiçeksipeti <span class="text-muted"></span>
+            </h4>
+        </a>
+
+        <div class="collapse" id="cckTask">
+            <div class="card mb-0">
+                <div class="card-body">
+                    
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="hb_username" class="col-form-label">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="hb_username" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_password" class="col-form-label">Şifre</label>
+                            <input type="text" class="form-control" id="hb_password" placeholder="Şifre">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_id" class="col-form-label">Merchant ID</label>
+                            <input type="text" class="form-control" id="hb_id" placeholder="Merchant ID">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="mt-4">
+        <a class="text-dark" data-toggle="collapse" href="#pttTask" aria-expanded="false"
+           aria-controls="pttTask">
+            <h4 class="m-0 pb-2">
+                <i class='uil uil-angle-down font-18'></i>E-PTTAVM <span class="text-muted"></span>
+            </h4>
+        </a>
+
+        <div class="collapse" id="pttTask">
+            <div class="card mb-0">
+                <div class="card-body">
+                    
+                    <form>
+                        <div class="form-group mb-3">
+                            <label for="hb_username" class="col-form-label">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="hb_username" placeholder="Kullanıcı Adı">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_password" class="col-form-label">Şifre</label>
+                            <input type="text" class="form-control" id="hb_password" placeholder="Şifre">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="hb_id" class="col-form-label">Merchant ID</label>
+                            <input type="text" class="form-control" id="hb_id" placeholder="Merchant ID">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#hb_btn").on('click', '#hb_send', function () {
+
+            $.ajax({
+                url: '@Url.Action("HBAPI", "Settings")',
+                data: {
+
+                    'username': $('#hb_username').val(),
+                    'password': $('#hb_password').val(),
+                    'merchantID': $('#hb_id').val()
+                },
+                type: "post",
+                cache: false,
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.responseText);
+                    }
+                    else {
+                        alert(response.responseText);
+                    }
+                }
+
+            });
+    });
+
+       $("#ty_btn").on('click', '#ty_send', function () {
+
+            $.ajax({
+                url: '@Url.Action("TYAPI", "Settings")',
+                data: {
+
+                    'APIKey': $('#ty_apikey').val(),
+                    'APISecret': $('#ty_apisecret').val(),
+                    'SupplierID': $('#ty_supplierid').val()
+                },
+                type: "post",
+                cache: false,
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.responseText);
+                    }
+                    else {
+                        alert(response.responseText);
+                    }
+                }
+
+            });
+       });
+
+       $("#gg_btn").on('click', '#gg_send', function () {
+
+            $.ajax({
+                url: '@Url.Action("GGAPI", "Settings")',
+                data: {
+
+                    'APIKey': $('#gg_apikey').val(),
+                    'SecretKey': $('#gg_secretkey').val(),
+                    'RoleName': $('#rolename').val(),
+                    'RolePass': $('#rolepass').val()
+
+                },
+                type: "post",
+                cache: false,
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.responseText);
+                    }
+                    else {
+                        alert(response.responseText);
+                    }
+                }
+
+            });
+       });
+
+       $("#n11_btn").on('click', '#n11_send', function () {
+
+            $.ajax({
+                url: '@Url.Action("N11API", "Settings")',
+                data: {
+
+                    'APIKey': $('#n11_apikey').val(),
+                  
+                },
+                type: "post",
+                cache: false,
+                success: function (response) {
+                    if (response.success) {
+                        alert(response.responseText);
+                    }
+                    else {
+                        alert(response.responseText);
+                    }
+                }
+
+            });
+    });
+</script>

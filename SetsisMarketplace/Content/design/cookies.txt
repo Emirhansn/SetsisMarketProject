@@ -1,0 +1,5 @@
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+.apexcharts.com	TRUE	/	FALSE	1999999999	__cfduid	d768df798f6c9feeaed26a18ae468be971595874010
+apexcharts.com	TRUE	/	FALSE	1999999999	SameSite	Lax
+

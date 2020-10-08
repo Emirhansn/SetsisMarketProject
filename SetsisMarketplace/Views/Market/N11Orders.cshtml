@@ -1,0 +1,170 @@
+﻿@{ ViewBag.Title = "GGOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+@model IEnumerable<SetsisMarketplace.Models.BaseModel.OrderDetail>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Setsis</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Marketplace</a></li>
+                        <li class="breadcrumb-item aitemive">Siparişler</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Siparişler</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-lg-8">
+                            <form class="form-inline">
+                                <div class="form-group mb-2">
+                                    <label for="inputPassword2" class="sr-only">Ara</label>
+                                    <input type="search" class="form-control" id="myInput" onkeyup="searchFunction()" placeholder="İsme Göre Ara...">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2">
+                                    <label for="status-select" class="mr-2">Mağaza</label>
+                                    <select class="custom-select" id="status-select">
+                                        <option seleitemed>Hepsiburada</option>
+                                        <option value="1">Trendyol</option>
+                                        <option value="2">Gittigidiyor</option>
+                                        <option value="3">n11</option>
+                                        <option value="4">Hepsiburada</option>
+                                    </select>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="text-lg-right">
+                                <button type="button" onclick="location.href='N11Orders';" class="btn btn-danger mb-2 mr-2"><i class="mdi mdi-basket mr-1"></i>Yenile</button>
+                                <button type="button" class="btn btn-light mb-2">Aktar</button>
+                            </div>
+                        </div><!-- end col-->
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-centered mb-0" id="myTable">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 20px;">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
+                                        </div>
+                                    </th>
+                                    <th>Sipariş ID</th>
+                                    <th>Müşteri Adı</th>
+                                    <th>Ürün Adı</th>
+                                    <th>Tarih</th>
+                                    <th>Adres</th>
+                                    <th>Toplam</th>
+                                    <th>Kargo</th>
+                                    <th style="width: 125px;">Aksiyon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                <label class="custom-control-label" for="customCheck2">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @item.OrderNumber
+                                        </td>
+                                        <td>
+                                            @item.Buyer.FullName
+                                        </td>
+                                        <td>
+                                            @item.ItemList.Item.ProductName
+                                        </td>
+                                        <td>
+                                            @item.CreateDate
+                                        </td>
+                                        <td>
+                                            @item.ShippingAddress.Address
+                                        </td>
+                                        <td>
+                                            @item.ItemList.Item.Price
+                                        </td>
+                                        <td>
+                                            @item.ItemList.Item.ShipmentInfo.ShipmentCompany.Name
+                                        </td>
+                                        <td>
+                                            <button data-id="" style="border:none; background-color:white;" class="action-icon"> <i class="mdi mdi-eye"></i></button>
+                                            <div id="myModal" class="modal fade" role="dialog" data-url='@Url.Action("PartialDetails", "Home")'></div>
+
+                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                                            <a href="javascript:void(0);" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+
+                                        </td>
+
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+</div> <!-- container -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.action-icon').click(function () {
+            var url = $('#myModal').data('url');
+            var id = $(this).attr('data-id');
+            $.get(url + '/' + id, function (data) {
+                $("#myModal").html(data);
+                $("#myModal").modal('show');
+            });
+        });
+    });
+
+    function searchFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
+

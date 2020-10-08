@@ -1,0 +1,170 @@
+﻿@using SetsisMarketplace.Models
+@model SetsisMarketplace.Models.Trendyol.TYMultiClass
+
+
+@{ ViewData["Title"] = "TYOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+<style>
+    .divide {
+        float: left;
+        margin: 5px;
+    }
+
+    .mdiv {
+        width: 200px;
+    }
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+@*<script type="text/javascript">
+function NavigatePage() {
+    var selectedValue = document.getElementById('Store').value;
+    if(selectedValue == "Trendyol")
+        document.location = '@Url.Action("Home", "TYOrders")';
+    else if(selectedValue == "Hepsiburada")
+        document.location = '@Url.Action("Home", "HBOrders")';
+
+}
+</script>*@
+
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+
+            <div class="page-title-box">
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Setsis</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Marketplace</a></li>
+                        <li class="breadcrumb-item active">Ürün Aktarma/Entegrasyon</li>
+                    </ol>
+                </div>
+                <h4 class="page-title">Ürün Aktarma/Entegrasyon</h4>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mb-2">
+                        <div class="col-lg-8">
+                            <form class="form-inline" method="post" action="\Market\PartialDetails">
+                                <div class="form-group mb-2">
+                                    <label for="inputPassword2" class="sr-only">Ara</label>
+                                    <input type="search" class="form-control" id="inputPassword2" placeholder="Ara...">
+                                </div>
+                                <div class="form-group mx-sm-3 mb-2" id="Store">
+                                    <label for="status-select" class="mr-2">Mağaza</label>
+                                    <select class="custom-select" id="Store" href="javascript:void(0);" onclick="NavigatePage();">
+                                        <option selected>Trendyol</option>
+                                        <option value="Trendyol">Trendyol</option>
+                                        <option value="Gittigidiyor" href="\Home\GGOrders">Gittigidiyor</option>
+                                        <option value="3">n11</option>
+                                        <option value="Hepsiburada">Hepsiburada</option>
+                                    </select>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="text-lg-right">
+                                <button type="button" class="btn btn-danger mb-2 mr-2"><i class="mdi mdi-basket mr-1"></i>Kaydet</button>
+                                <button type="button" class="btn btn-light mb-2">Yenile</button>
+                            </div>
+                        </div><!-- end col-->
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-centered mb-0" id="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th style="width: 20px;">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                            <label class="custom-control-label" for="customCheck1">&nbsp;</label>
+                                        </div>
+                                    </th>
+                                    <th>Ürün Kategorisi</th>
+                                    <th>Mağaza Kategorisi</th>
+
+                                    <th style="width: 125px;">Aksiyon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (HierarchyModel hierarchyModel in Model.Hierarchies)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input">
+                                                <label class="custom-control-label">&nbsp;</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @Html.Label(hierarchyModel.ProductHierarchyLevel01, htmlAttributes: new { @id = "cat1" })>@Html.Label(hierarchyModel.ProductHierarchyLevel02, htmlAttributes: new { @id = "cat2" })
+                                        </td>
+                                        <td>
+                                          @Html.DropDownListFor(model => model.Categories, ViewBag.CatList as SelectList, "Seçiniz", new {
+                                         @class = "form-control select2", 
+                                         @onChange = "SelectedValue(this)"   })   
+                                        </td>
+                                        <td>
+                                            <div class="mdiv">
+                                                <div class="divide">
+                                                    <button type="button" class="btn btn-success" id="oks"><i class="mdi mdi-content-save"></i> Kaydet</button>
+                                                </div>
+                                                <div class="divide">
+                                                    <button type="button" class="btn btn-outline-danger"><i class="mdi mdi-refresh"></i> Sıfırla</button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div> <!-- end card-body-->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+</div> <!-- container -->
+
+<script type="text/javascript">
+    function SendorderNumber(orderNumber) {
+        var url = '@Url.Action("PartialDetails","Market")';
+        url += '/?orderNumber=' + orderNumber;
+        $(".modal-body").load(url);
+    }
+       var selectedValue;
+    var selectedText;
+
+       function SelectedValue(ddlObject) {
+       selectedValue = ddlObject.value;
+           selectedText = ddlObject.options[ddlObject.selectedIndex].innerHTML;
+          
+    }
+
+    $("#table").on('click', '#oks', function () {
+        var currentRow = $(this).closest("tr");
+        var col2 = currentRow.find("td:eq(1)").text();
+            $.ajax({
+                url: '@Url.Action("TYAddProduct", "Market")',
+                data: {
+                    'id': selectedValue, 'name': selectedText, 'cat': col2
+                },
+                type: "post",
+                cache: false,
+            
+            });
+    });
+
+</script>

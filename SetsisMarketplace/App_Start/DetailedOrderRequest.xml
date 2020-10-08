@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sch="http://www.n11.com/ws/schemas">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <sch:DetailedOrderListRequest>
+      <auth>
+        <appKey></appKey>
+        <appSecret></appSecret>
+      </auth>
+      <searchData>
+        <productId></productId>
+        <status></status>
+        <buyerName></buyerName>
+        <orderNumber></orderNumber>
+        <productSellerCode></productSellerCode>
+        <recipient></recipient>
+        <sameDayDelivery></sameDayDelivery>
+        <period>
+          <startDate></startDate>
+          <endDate></endDate>
+        </period>
+        <sortForUpdateDate></sortForUpdateDate>
+      </searchData>
+      <pagingData>
+        <currentPage></currentPage>
+        <pageSize></pageSize>
+        <totalCount></totalCount>
+        <pageCount></pageCount>
+      </pagingData>
+    </sch:DetailedOrderListRequest>
+  </soapenv:Body>
+</soapenv:Envelope>

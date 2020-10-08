@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "PartialDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model SetsisMarketplace.Models.BaseModel.Content
+<head>
+    <style>
+        .lbl {
+            color: white;
+            font-size: medium;
+        }
+
+        .h3a {
+            color: white;
+        }
+    </style>
+</head>
+<div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header" style=" background: #323A47;">
+            <h3 class="h3a">Sipariş Detayları</h3>
+
+        </div>
+
+        <div class="modal-body" style=" background: #323A47;">
+            <div class="form-group">
+                <form asp-action="PartialDetails">
+                    <div asp-validation-summary="ModelOnly" class="control-label"></div>
+                    <input type="hidden" asp-for="orderNumber" />
+                    <div class="form-group">
+                        <label asp-for="orderNumber" class="lbl">
+                            Sipariş Numarası: @Html.DisplayFor(model => model.orderNumber)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="customerFirstName" class="lbl">
+                            Adı Soyadı: @Html.DisplayFor(model => model.customerFirstName) @Html.DisplayFor(model => model.customerLastName)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="shipmentAddress" class="lbl">
+                            Adresi: @Html.DisplayFor(model => model.ShipmentAddress.address1)  @Html.DisplayFor(model => model.ShipmentAddress.city)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="customerEmail" class="lbl">
+                            Mail Adresi: @Html.DisplayFor(model => model.customerEmail)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="orderDate" class="lbl">
+                            Sipariş Tarihi: @Html.DisplayFor(model => model.orderDate)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="trendyols" class="lbl">
+                            Ürün Adı : @Html.DisplayFor(model => model.productName)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="cargoProviderName" class="lbl">
+                            Kargo: @Html.DisplayFor(model => model.cargoProviderName)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="cargoTrackingNumber" class="lbl">
+                            Kargo Takip Numarası: @Html.DisplayFor(model => model.cargoTrackingNumber)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="cargoTrackingLink" class="lbl">
+                            Kargo Takip : @Html.DisplayFor(model => model.cargoTrackingLink)
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="totalPrice" class="lbl">
+                            Fiyat: @Html.DisplayFor(model => model.totalPrice)
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Kapat</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

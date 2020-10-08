@@ -1,0 +1,129 @@
+﻿@model SetsisMarketplace.Models.Settings.listCompanyModel
+@{
+    ViewBag.Title = "SetUsers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+</head>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="header-title">Kullanıcı Ayarları</h4>
+                <div class="tab-content">
+                    <div class="tab-pane show active" id="form-row-preview">
+
+                        <div class="col-lg-6">
+                            <form>
+                                <div class="form-group mb-3">
+                                    <label for="username" class="col-form-label">Kullanıcı Adınız</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Kullanıcı Adı">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="inputPassword4" class="col-form-label">Şifre</label>
+                                    <input type="password" class="form-control" id="inputPassword4" placeholder="Şifre">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="username" class="col-form-label">Ad Soyad/Ünvan</label>
+                                    <input type="text" class="form-control" id="NameSurname" placeholder="Ad Soyad">
+                                </div>
+
+                            </form>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <form>
+                                <div class="form-group mb-3">
+                                    <label for="inputState" class="col-form-label">Şirket</label>
+                                    @Html.DropDownListFor(x => x.CompanyNames, Model.CompanyNames, "--Seçiniz--", new { @id = "ddlState", @class = "form-control" })
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="inputState" class="col-form-label" >Ofis</label>
+                                    <div id="District">
+                                        @Html.DropDownListFor(x => x.OfficeCodes, new List<SelectListItem>(), "--Seçiniz--", new { @id ="ddlDistrict", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label for="inputState" class="col-form-label">Depo</label>
+                                    <div id="District2">
+                                        @Html.DropDownListFor(x => x.WarehouseCodes, new List<SelectListItem>(), "--Seçiniz--", new { @id = "ddlWarehouse", @class = "form-control" })
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="form-group" id="btnSend">
+                            <button type="submit" class="btn btn-primary" id="send">Kaydet</button>
+
+                        </div>
+
+                    </div> <!-- end preview-->
+                </div> <!-- end card-body -->
+            </div> <!-- end card-->
+        </div> <!-- end col -->
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#ddlState').change(function () {
+            $.ajax({
+                type: "post",
+                url: '@Url.Action("GetOffices", "Settings")',
+                data: { CompanyCode: $('#ddlState').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var district = "<select id='ddlDistrict' class='form-control'>";
+                    district = district + '<option value="">--Seçiniz--</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        district = district + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                    }
+                    district = district + '</select>';
+                    $('#District').html(district);
+                }
+            });
+        });
+    });
+
+        $(document).on('change','#ddlDistrict',function () {
+                $.ajax({
+                    type: "post",
+                    url: '@Url.Action("GetWarehouses", "Settings")',
+                    data: { OfficeCode: $('#ddlDistrict :selected').text() },
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        var ware = "<select id='ddlWarehouse' class='form-control'>";
+                        ware = ware + '<option value="">--Seçiniz--</option>';
+                        for (var i = 0; i < data.length; i++) {
+                            ware = ware + '<option value=' + data[i].Value + '>' + data[i].Text + '</option>';
+                        }
+                        ware = ware + '</select>';
+                        $('#District2').html(ware);
+                    }
+                });
+        });
+
+    $("#btnSend").on('click', '#send', function () {
+
+            $.ajax({
+                url: '@Url.Action("Save", "Settings")',
+                data: {
+                    'CompanyName': $('#ddlState :selected').text(),
+                    'CompanyCode': $('#ddlState :selected').val(),
+                    'OfficeCode': $('#ddlDistrict :selected').text(),
+                    'WarehouseCode': $('#ddlWarehouse :selected').text(),
+                    'username': $('#username').val(),
+                    'password': $('#inputPassword4').val(),
+                    'NameSurname': $('#NameSurname').val()
+                },
+                type: "post",
+                cache: false,
+
+            });
+    });
+</script>  

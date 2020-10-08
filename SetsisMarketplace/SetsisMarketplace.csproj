@@ -1,0 +1,985 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{07CF07AA-4E1B-42AD-B722-575F25C0624E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SetsisMarketplace</RootNamespace>
+    <AssemblyName>SetsisMarketplace</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44390</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ApiV2Client">
+      <HintPath>C:\Users\furka\Desktop\ApiV2Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.14.0.17971, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.14.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.14.0.17971, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.14.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.14.0.17971, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.14.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.14.0.17971, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.14.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.14.0.17971, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.14.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.14.0.17971, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.14.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.7\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Http, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Http.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="MWSClientCsRuntime-1.0">
+      <HintPath>..\..\..\amz\dist\MWSClientCsRuntime-1.0.dll</HintPath>
+    </Reference>
+    <Reference Include="MWSOrders_2013-09-01_v2020-09-29">
+      <HintPath>..\..\..\amz\dist\MWSOrders_2013-09-01_v2020-09-29.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.11.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.11.4\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SqlClient, Version=4.6.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SqlClient.4.8.2\lib\net461\System.Data.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.6.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Connected Services\N11WebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AmazonController.cs" />
+    <Compile Include="Controllers\MarketController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="DataService\DataService2.cs" />
+    <Compile Include="DataService\DataService.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaseModel\Content.cs" />
+    <Compile Include="Models\BaseModel\DiscountDetail.cs" />
+    <Compile Include="Models\BaseModel\InvoiceAddress.cs" />
+    <Compile Include="Models\BaseModel\Line.cs" />
+    <Compile Include="Models\BaseModel\N11Model.cs" />
+    <Compile Include="Models\BaseModel\N11OrderDetail.cs" />
+    <Compile Include="Models\BaseModel\Root.cs" />
+    <Compile Include="Models\BaseModel\ShipmentAddress.cs" />
+    <Compile Include="Models\BaseModel\GittigidiyorModel.cs" />
+    <Compile Include="Models\BaseModel\MarketplaceModel.cs" />
+    <Compile Include="Models\CompanyInfo.cs" />
+    <Compile Include="Models\HBModel.cs" />
+    <Compile Include="Models\Hepsibuarada\Commission.cs" />
+    <Compile Include="Models\Hepsibuarada\HBItem.cs" />
+    <Compile Include="Models\Hepsibuarada\MerchantTotalPrice.cs" />
+    <Compile Include="Models\Hepsibuarada\MerchantUnitPrice.cs" />
+    <Compile Include="Models\Hepsibuarada\MyArray.cs" />
+    <Compile Include="Models\Hepsibuarada\Price.cs" />
+    <Compile Include="Models\Hepsibuarada\UnitHBDiscount.cs" />
+    <Compile Include="Models\Hepsibuarada\TotalHBDiscount.cs" />
+    <Compile Include="Models\Hepsibuarada\TotalPrice.cs" />
+    <Compile Include="Models\Hepsibuarada\TotalPrice2.cs" />
+    <Compile Include="Models\HierarchyModel.cs" />
+    <Compile Include="Models\Login\LoginModel.cs" />
+    <Compile Include="Models\Login\_SessionController.cs" />
+    <Compile Include="Models\Settings\CompanyModel.cs" />
+    <Compile Include="Models\Settings\listCompanyModel.cs" />
+    <Compile Include="Models\Settings\OfficeModel.cs" />
+    <Compile Include="Models\Settings\WarehouseModel.cs" />
+    <Compile Include="Models\Trendyol\CategoryMatch.cs" />
+    <Compile Include="Models\Trendyol\TYMultiClass.cs" />
+    <Compile Include="Models\BaseModel\Users.cs" />
+    <Compile Include="Models\Trendyol\Attributes.cs" />
+    <Compile Include="Models\Trendyol\Category.cs" />
+    <Compile Include="Models\Trendyol\CategoryRoot.cs" />
+    <Compile Include="Models\Trendyol\Image.cs" />
+    <Compile Include="Models\Trendyol\Item.cs" />
+    <Compile Include="Models\Trendyol\ADDRoot.cs" />
+    <Compile Include="Models\Trendyol\SubCategory5.cs" />
+    <Compile Include="Models\Trendyol\SubCategory2.cs" />
+    <Compile Include="Models\Trendyol\SubCategory3.cs" />
+    <Compile Include="Models\Trendyol\SubCategory4.cs" />
+    <Compile Include="Models\Trendyol\SubCategory.cs" />
+    <Compile Include="Models\Trendyol\TYStockCard.cs" />
+    <Compile Include="Models\TYTEST.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\N11WebService\configuration91.svcinfo" />
+    <None Include="Connected Services\N11WebService\configuration.svcinfo" />
+    <None Include="Connected Services\N11WebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="App_Start\DetailedOrderRequest.xml" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\site.css" />
+    <Content Include="Content\design\apexcharts.com\samples\assets\github-data.js" />
+    <Content Include="Content\design\apexcharts.com\samples\assets\irregular-data-series.js" />
+    <Content Include="Content\design\apexcharts.com\samples\assets\ohlc.js" />
+    <Content Include="Content\design\apexcharts.com\samples\assets\series1000.js" />
+    <Content Include="Content\design\apexcharts.com\samples\assets\stock-prices.js" />
+    <Content Include="Content\design\backblue.gif" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+\index.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-calendar.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-chat.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-checkout.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-customers.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-orders-details.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-orders.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-products-details.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-products.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-sellers.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-ecommerce-shopping-cart.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-email-inbox.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-email-read.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-kanban.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-projects-add.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-projects-details.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-projects-gantt.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-projects-list.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-social-feed.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-tasks-details.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\apps-tasks.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\app-dark.min.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\app.min.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\icons.min.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\britecharts.min.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\buttons.bootstrap4.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\dataTables.bootstrap4.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\font\summernote-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\font\summernote-3.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\font\summernote-4.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\font\summernote.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\font\summernoted41d.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\frappe-gantt.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\fullcalendar.min.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\jquery-jvectormap-1.2.2.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\responsive.bootstrap4.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\select.bootstrap4.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\simplemde.min.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\css\vendor\summernote-bs4.css" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fontsunicons8adf.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\dripicons-v2.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Bold.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Light.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Light.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Lightd41d.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Regular.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-SemiBold.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\unicons8adf.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\barcode.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\bg-auth.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\bg-pattern-dark.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\bg-pattern-light.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\bg-pattern.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\brands\bitbucket.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\brands\dribbble.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\brands\dropbox.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\brands\g-suite.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\brands\github.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\brands\slack.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\email-campaign.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\favicon.ico" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\features-1.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\features-2.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\file-searching.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\flags\germany.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\flags\italy.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\flags\russia.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\flags\spain.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\flags\us.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\help-icon.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\layouts\layout-1.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\layouts\layout-2.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\layouts\layout-3.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\layouts\layout-4.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\layouts\layout-5.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\layouts\layout-6.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\logo-dark.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\logo-light.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\logo.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\logo_sm.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\logo_sm_dark.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\mail_sent.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\maintenance.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\payments\cod.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\payments\discover.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\payments\master.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\payments\payoneer.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\payments\paypal.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\payments\stripe.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\payments\visa.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\products\product-1.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\products\product-2.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\products\product-3.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\products\product-4.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\products\product-5.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\products\product-6.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\projects\project-1.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\projects\project-2.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\projects\project-3.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\projects\project-4.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\report.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\small\small-1.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\small\small-2.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\small\small-3.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\small\small-4.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\startman.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\startup.svg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-1.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-10.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-2.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-3.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-4.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-5.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-6.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-7.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-8.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\users\avatar-9.jpg" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\images\waves.png" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\app.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-area.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-bar.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-bubble.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-candlestick.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-column.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-heatmap.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-line.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-mixed.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-pie.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-radar.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-radialbar.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-scatter.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.apex-sparklines.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.britechart.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.calendar.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.chartjs.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.customers.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.dashboard-analytics.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.dashboard-crm.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.dashboard-projects.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.dashboard.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.datatable-init.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.form-wizard.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.google-maps.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.inbox.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.products.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.profile.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.project-detail.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.project-gantt.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.sellers.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.simplemde.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.sparkline.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.summernote.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.toastr.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.typehead.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.vector-maps.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\pages\demo.widgets.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\ui\component.chat.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\ui\component.dragula.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\ui\component.fileupload.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\ui\component.range-slider.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\ui\component.rating.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\ui\component.todo.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\apexcharts.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\britecharts.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\buttons.bootstrap4.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\buttons.flash.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\buttons.html5.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\buttons.print.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\Chart.bundle.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\d3.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dataTables.bootstrap4.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dataTables.buttons.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dataTables.checkboxes.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dataTables.keyTable.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dataTables.responsive.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dataTables.select.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dragula.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\dropzone.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\frappe-gantt.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\fullcalendar.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\gmaps.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\handlebars.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\ion.rangeSlider.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-au-mill-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-ca-lcc-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-es-merc.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-es-mill.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-europe-mill-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-fr-merc-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-in-mill-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-uk-mill-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-us-il-chicago-mill-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-us-merc-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery-ui.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery.dataTables.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery.rateit.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\jquery.sparkline.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\responsive.bootstrap4.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\simplemde.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\summernote-bs4.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\js\vendor\typeahead.bundle.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\buttons.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-area.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-bar.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-bubble.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-candlestick.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-column.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-heatmap.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-line.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-mixed.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-pie.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-radar.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-radialbar.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-scatter.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-apex-sparklines.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-brite.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-chartjs.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\charts-sparkline.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\addon\display\fullscreen.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\addon\display\placeholder.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\addon\edit\continuelist.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\addon\mode\overlay.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\addon\selection\mark-selection.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\mode\gfm\gfm.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\mode\markdown\markdown.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\codemirror\mode\xml\xml.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\dashboard-analytics.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\dashboard-crm.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\dashboard-projects.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\Data needs to have a dataByTopic or data property. See more in http_\eventbrite.github.io\britecharts\global.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\extended-dragula.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\extended-range-slider.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\extended-ratings.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\extended-scrollbar.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\extended-scrollspy.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\form-advanced.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\form-editors.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\form-elements.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\form-fileuploads.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\form-validation.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\form-wizard.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\GET.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\icons-dripicons.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\icons-mdi.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\icons-unicons.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\index-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\index.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\landing.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\layouts-detached.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\layouts-horizontal.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\maps-google.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\maps-vector.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-404-alt.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-404.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-500.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-confirm-mail-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-confirm-mail.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-faq.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-invoice.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-lock-screen-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-lock-screen.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-login-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-login.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-logout-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-logout.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-maintenance.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-preloader.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-pricing.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-profile-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-profile.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-recoverpw-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-recoverpw.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-register-2.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-register.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-starter.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\pages-timeline.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\tables-basic.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\tables-datatable.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\typeahead.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-accordions.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-alerts.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-avatars.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-badges.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-breadcrumb.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-buttons.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-cards.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-carousel.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-dropdowns.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-embed-video.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-grid.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-list-group.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-media-object.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-modals.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-notifications.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-pagination.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-popovers.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-progress.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-ribbons.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-spinners.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-tabs.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-tooltips.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\ui-typography.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\widgets.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\xl\styles.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\xl\workbook.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\xl\worksheets\sheet1.html" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\[Content_Types].html" />
+    <Content Include="Content\design\cookies.txt" />
+    <Content Include="Content\design\fade.gif" />
+    <Content Include="Content\design\hts-cache\new.txt" />
+    <Content Include="Content\design\hts-cache\readme.txt" />
+    <Content Include="Content\design\hts-log.txt" />
+    <Content Include="Content\design\index.html" />
+    <Content Include="Content\design\maxcdn.bootstrapcdn.com\font-awesome\latest\css\font-awesome.min.css" />
+    <Content Include="Content\favicon.ico" />
+    <Content Include="Content\js\site.js" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Content\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Include="Content\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Include="Content\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Include="Content\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Include="Content\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Include="Content\lib\jquery\dist\jquery.js" />
+    <Content Include="Content\lib\jquery\dist\jquery.min.js" />
+    <Content Include="Content\lib\jquery\LICENSE.txt" />
+    <Content Include="Content\Login_v3\css\main.css" />
+    <Content Include="Content\Login_v3\css\util.css" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\Login_v3\fonts\iconic\css\material-design-iconic-font.css" />
+    <Content Include="Content\Login_v3\fonts\iconic\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\bg-01.jpg" />
+    <Content Include="Content\Login_v3\images\icons\favicon.ico" />
+    <Content Include="Content\Login_v3\index.html" />
+    <Content Include="Content\Login_v3\js\main.js" />
+    <Content Include="Content\Login_v3\vendor\animate\animate.css" />
+    <Content Include="Content\Login_v3\vendor\animsition\css\animsition.css" />
+    <Content Include="Content\Login_v3\vendor\animsition\css\animsition.min.css" />
+    <Content Include="Content\Login_v3\vendor\animsition\js\animsition.js" />
+    <Content Include="Content\Login_v3\vendor\animsition\js\animsition.min.js" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\js\popper.js" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\js\popper.min.js" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\js\tooltip.js" />
+    <Content Include="Content\Login_v3\vendor\countdowntime\countdowntime.js" />
+    <Content Include="Content\Login_v3\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\Login_v3\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\Login_v3\vendor\daterangepicker\daterangepicker.css" />
+    <Content Include="Content\Login_v3\vendor\daterangepicker\daterangepicker.js" />
+    <Content Include="Content\Login_v3\vendor\daterangepicker\moment.js" />
+    <Content Include="Content\Login_v3\vendor\daterangepicker\moment.min.js" />
+    <Content Include="Content\Login_v3\vendor\jquery\jquery-3.2.1.min.js" />
+    <Content Include="Content\Login_v3\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Content\Login_v3\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Content\Login_v3\vendor\select2\select2.css" />
+    <Content Include="Content\Login_v3\vendor\select2\select2.js" />
+    <Content Include="Content\Login_v3\vendor\select2\select2.min.css" />
+    <Content Include="Content\Login_v3\vendor\select2\select2.min.js" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap.css" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.js" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\dripicons-v2.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\dripicons-v2.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\dripicons-v2.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\dripicons-v2d41d.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\materialdesignicons-webfont74b7.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\materialdesignicons-webfont74b7.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\materialdesignicons-webfont74b7.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\materialdesignicons-webfont74b7.woff2" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\materialdesignicons-webfontd41d.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Bold.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Bold.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Bold.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Boldd41d.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Light.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Light.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Regular.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Regular.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Regular.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-Regulard41d.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-SemiBold.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-SemiBold.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-SemiBold.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\Nunito-SemiBoldd41d.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\summernote.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\summernoted41d.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\summernoted41d.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\summernoted41d.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\unicons8adf.eot" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\unicons8adf.ttf" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\unicons8adf.woff" />
+    <Content Include="Content\design\coderthemes.com\hyper\saas\assets\fonts\unicons8adf.woff2" />
+    <Content Include="Content\design\hts-cache\new.lst" />
+    <Content Include="Content\design\hts-cache\new.zip" />
+    <Content Include="Content\design\hts-cache\winprofile.ini" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="Content\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Content\lib\bootstrap\LICENSE" />
+    <Content Include="Content\lib\jquery-validation\LICENSE.md" />
+    <Content Include="Content\lib\jquery\dist\jquery.min.map" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\Login_v3\fonts\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\Login_v3\fonts\iconic\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Content\Login_v3\fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\Login_v3\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-grid.css.map" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\twitter-bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.js.map" />
+    <Content Include="Content\twitter-bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="ApplicationInsights.config" />
+    <None Include="Connected Services\N11WebService\OrderService.wsdl" />
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.ComplementaryItemDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.ComplementaryItemDetailResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.DetailedOrderListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.DetailedOrderListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.MakeOrderItemShipmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.MakeOrderItemShipmentResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderDetailResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderItemAcceptResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderItemAcceptResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderItemRejectResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderItemRejectResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\N11WebService\SetsisMarketplace.N11WebService.OrderListResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FTPProfile.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Market\HBOrders.cshtml" />
+    <Content Include="Views\Market\Index.cshtml" />
+    <Content Include="Views\Market\N11Orders.cshtml" />
+    <Content Include="Views\Market\PartialDetails.cshtml" />
+    <Content Include="Views\Market\TYOrders.cshtml" />
+    <Content Include="Views\Market\GGOrders.cshtml" />
+    <Content Include="Views\Market\TYAddProduct.cshtml" />
+    <Content Include="Views\Market\Error.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Market\Norder.cshtml" />
+    <Content Include="Views\Settings\SetUsers.cshtml" />
+    <Content Include="Views\Amazon\Index.cshtml" />
+    <Content Include="Views\Settings\SetAPI.cshtml" />
+    <Content Include="Views\PartialView\SuccessModal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\N11WebService\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2070</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44390/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.14.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.14.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.14.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.14.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.14.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.14.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.14.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.14.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.14.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.14.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.14.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.14.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.14.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
